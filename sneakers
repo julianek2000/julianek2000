@@ -1,0 +1,28 @@
+const puppeteer = require('puppeteer');
+
+const product_url = "https://www.nike.com/de/t/air-force-1-07-space-jam-a-new-legacy-herrenschuh-XbZKqK/DH5354-001?CP=EUNS_AFF_AWIN_DE_741981_httpsdroplistapplinkdownload_164407&utm_source=httpsdroplistapplinkdownload&utm_medium=affiliate&utm_campaign=741981&utm_content=164407&awc=16329_1626440412_ea7ad48b5f6d83eaccf46326d3c6dbe8";
+
+
+async function givePage(){
+    const browser = await puppeteer.launch({headless: false});
+    const page = await browser.newPage();
+    return page;
+}
+
+async function addToCart(page){
+    await page.goto(product_url);
+    await page.waitForSelector("button[class='ncss-btn-primary-dark pt3-sm pb3-sm pt2-lg pb2-lg ta-sm-c u-full-width'")
+    await page.click("button[class='ncss-btn-primary-dark pt3-sm pb3-sm pt2-lg pb2-lg ta-sm-c u-full-width']"), elem => elem.click();
+    await page.waitNavigation();
+    await page.click("button[data-size='8.5']", elem => elem.click());
+    await page.waitNavigation();
+    await page.click("button[class='ncss-btn-primary-dark btn-lg add-to-cart-btn']", elem => elem.click());}
+
+async function checkout(){
+    var page = await givePage();
+    await addToCart(page);
+
+
+}
+
+checkout()
