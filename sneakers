@@ -1,10 +1,10 @@
 const puppeteer = require('puppeteer');
 
-const product_url = "https://www.nike.com/de/t/air-force-1-07-space-jam-a-new-legacy-herrenschuh-XbZKqK/DH5354-001?CP=EUNS_AFF_AWIN_DE_741981_httpsdroplistapplinkdownload_164407&utm_source=httpsdroplistapplinkdownload&utm_medium=affiliate&utm_campaign=741981&utm_content=164407&awc=16329_1626440412_ea7ad48b5f6d83eaccf46326d3c6dbe8";
+const product_url = "https://www.nike.com/pl/t/buty-meskie-air-force-1-07-space-jam-a-new-legacy-XbZKqK/DH5354-001?CP=EUNS_AFF_AWIN_DE_741981_httpsdroplistapplinkdownload_164407&utm_source=httpsdroplistapplinkdownload&utm_medium=affiliate&utm_campaign=741981&utm_content=164407&awc=16329_1626440412_ea7ad48b5f6d83eaccf46326d3c6dbe8%22;";
 
 
 async function givePage(){
-    const browser = await puppeteer.launch({headless: false});
+    const browser = await puppeteer.launch({ args: [ '--disable-web-security'], headless: false });
     const page = await browser.newPage();
     return page;
 }
@@ -15,11 +15,11 @@ async function addToCart(page){
     await page.waitForSelector('#hf_cookie_text_cookieAccept')
     await page.click('#hf_cookie_text_cookieAccept', elem => elem.click());
 
-    await page.waitForSelector('input[value="26646098:9.5"]+label');
-    await page.click('input[value="26646098:9.5"]+label', elem => elem.click());
+    await page.waitForSelector('input[value="26646101:11"]~label');
+    await page.click('input[value="26646101:11"]~label', elem => elem.click());
 
-    await page.waitForSelector('button.add-to-cart-btn');
-    await page.click('button.add-to-cart-btn', elem => elem.click());
+    await page.click('.add-to-cart-btn', elem => elem.click());
+
 }
 
 async function checkout(){
