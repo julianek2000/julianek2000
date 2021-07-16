@@ -14,7 +14,7 @@ async function addToCart(page){
     await page.waitForSelector("button[class='ncss-btn-primary-dark pt3-sm pb3-sm pt2-lg pb2-lg ta-sm-c u-full-width'")
     await page.click("button[class='ncss-btn-primary-dark pt3-sm pb3-sm pt2-lg pb2-lg ta-sm-c u-full-width']"), elem => elem.click();
     await page.waitNavigation();
-    await page.click("button[data-size='8.5']", elem => elem.click());
+    await page.click('input[value="26279560:8"]+label', elem => elem.click());
     await page.waitNavigation();
     await page.click("button[class='ncss-btn-primary-dark btn-lg add-to-cart-btn']", elem => elem.click());}
 
