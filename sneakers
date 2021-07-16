@@ -11,12 +11,16 @@ async function givePage(){
 
 async function addToCart(page){
     await page.goto(product_url);
-    await page.waitForSelector("button[class='ncss-btn-primary-dark pt3-sm pb3-sm pt2-lg pb2-lg ta-sm-c u-full-width'")
-    await page.click("button[class='ncss-btn-primary-dark pt3-sm pb3-sm pt2-lg pb2-lg ta-sm-c u-full-width']"), elem => elem.click();
-    await page.waitNavigation();
-    await page.click('input[value="26279560:8"]+label', elem => elem.click());
-    await page.waitNavigation();
-    await page.click("button[class='ncss-btn-primary-dark btn-lg add-to-cart-btn']", elem => elem.click());}
+
+    await page.waitForSelector('#hf_cookie_text_cookieAccept')
+    await page.click('#hf_cookie_text_cookieAccept', elem => elem.click());
+
+    await page.waitForSelector('input[value="26646098:9.5"]+label');
+    await page.click('input[value="26646098:9.5"]+label', elem => elem.click());
+
+    await page.waitForSelector('button.add-to-cart-btn');
+    await page.click('button.add-to-cart-btn', elem => elem.click());
+}
 
 async function checkout(){
     var page = await givePage();
